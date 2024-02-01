@@ -1,4 +1,4 @@
-name: Java CI with Maven
+name: Maven Build and Display Goals
 
 on:
   push:
@@ -25,3 +25,5 @@ jobs:
 
     - name: Display Maven Goals Output
       run: mvn help:describe -Dcmd=install
+
+  
