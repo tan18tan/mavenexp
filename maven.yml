@@ -1,0 +1,36 @@
+name: Maven Build and Display Goals
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: '11'
+
+    - name: Build with Maven
+      run: mvn clean install
+
+    - name: Display Maven Goals Output
+      run: mvn help:describe -Dcmd=install
+           mvn help:describe -Dcmd=validate
+        mvn help:describe -Dcmd=initialize
+        mvn help:describe -Dcmd=generate-sources
+        mvn help:describe -Dcmd=process-sources
+        mvn help:describe -Dcmd=generate-resources
+        mvn help:describe -Dcmd=process-resources
+        mvn help:describe -Dcmd=compile
+        mvn help:describe -Dcmd=process-classes
+        mvn help:describe -Dcmd=generate-test-sources
